@@ -24,21 +24,8 @@ Route::view('/contact','contact')->name('contact');
 Route::get('/portafolio','PortafolioController@index')->name('portafolio');
 
 Route::post('contact', 'MessagesController@store');
-/*
-Route::get('/', function(){
-    $nombre = "Annie";
-   return view('home',compact());
-}
-)->name('home');*/
+
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
