@@ -37287,6 +37287,8 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! ./components/Example */ "./resources/js/components/Example.js");
 
+alert('hola');
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
