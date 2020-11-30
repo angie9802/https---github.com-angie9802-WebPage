@@ -3,22 +3,21 @@
 @section('content')
 
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+    
+      <!-- Search form -->
+    <<form class="form-inline active-pink-3 active-pink-4" >
+        <i class="fas fa-search" aria-hidden="true"></i>
+        <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search"
+          aria-label="Search">
+        <input type="submit"name="submit">
+      </form>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
-                </div>
-            </div>
-        </div>
-    </div>
+    <form method="get">
+    <label>Search</label>
+    <input type="text"name="search">
+    <input type="submit"name="submit">
+    </form>
 </div>
+
+
 @endsection

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\users;
+use App\patientshh;
 use Illuminate\Http\Request;
 
 class PortafolioController extends Controller
@@ -13,13 +15,8 @@ class PortafolioController extends Controller
      */
     public function index()
     {
-        $portafolios = [
-            ['title' => 'Proyectos#1'],
-            ['title' => 'Proyectos#2'],
-            ['title' => 'Proyectos#3'],
-            ['title' => 'Proyectos#4'],
-        ];
-        return view('portafolio',compact('portafolios'));
+        $patientshhs = patientshh::all()->toArray();
+        return view('portafolio', compact('patientshhs'));
     }
 
 }
