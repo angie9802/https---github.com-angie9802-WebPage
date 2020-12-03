@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\users;
-use App\patientshh;
+use App\user_patienthh;
 use Illuminate\Http\Request;
 
 class PortafolioController extends Controller
@@ -15,8 +15,8 @@ class PortafolioController extends Controller
      */
     public function index()
     {
-        $patientshhs = patientshh::all()->toArray();
-        return view('portafolio', compact('patientshhs'));
+        $user_patienthhs = user_patienthh::all()->toArray();
+        return view('portafolio', compact('user_patienthhs'));
     }
 
 }

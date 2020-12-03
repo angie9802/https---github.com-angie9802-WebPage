@@ -1,64 +1,37 @@
-@extends('layout')
-@section('title', 'Portafolio')
+@extends('layouts.app')
+@section('title', 'Portfolio')
 
 
 @section('content')
 
-    <h1>Portafolio</h1>
-
+    <h3 class="text-center text-light bg-danger p-2 ">Patient Portfolio</h3>
+    <div class="table-responsive-sm">
     <table class="table ">
         <thead>
-            <tr>
-                <th scope="col">temperatura</th>
-                <th scope="col">bpm</th>
-                <th scope="col">ac_x</th>
-                <th scope="col">ac_y</th>
+            <tr class="table-light">
+                <th scope="col">ID</th>
+                <th scope="col">First name</th>
+                <th scope="col">Last name</th>
+                <th scope="col">Email</th>
             </tr>
         </thead>
         <tbody>
-        @foreach ($patientshhs as $row)
-            <tr>
-                <td>{{$row['temperatura']}}</td>
-                <td>{{$row['bpm']}}</td>
-                <td>{{$row['ac_x']}}</td>
-                <td>{{$row['ac_y']}}</td>
-                <td></td>
-                <td></td>
+        @foreach ($user_patienthhs as $row)
+           
+            <tr> 
+                <th scope="row">{{$row['id']}}</th>
+                <td>{{$row['firstName']}}</td>
+                <td>{{$row['lastName']}}</td>
+                <td>{{$row['email']}}</td>
+              
             </tr>
+          
         @endforeach
         </tbody>
     </table>
+    </div>
 
-    <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-          </tr>
-        </tbody>
-      </table>
     
+      
 
 @endsection 
