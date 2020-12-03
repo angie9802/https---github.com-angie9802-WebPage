@@ -16,8 +16,7 @@ require 'config.php';
 
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>   
 
 <!-- Popper JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -96,9 +95,9 @@ require 'config.php';
                                 
                                     <p> 
                                         ID : <?= $row['user_id']; ?><br>
-                                        temperatura : <?= $row['temperatura']; ?><br>
+                                        temperatura(°C) : <?= $row['temperatura']; ?><br>
                                         bpm : <?= $row['bpm']; ?><br>
-                                        sO2 : <?= $row['sO2']; ?><br>
+                                        sO2(%) : <?= $row['sO2']; ?><br>
                                     </p>
                                     
                                 </div>
@@ -120,13 +119,10 @@ require 'config.php';
                         var user_id = get_filter_text('user_id');
                         var fecha = get_filter_text('fecha');
 
-                        $.ajaxSetup({
-                         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
-                        });
 
                         $.ajax({
                             url: 'action.php',
-                            type :'POST',
+                            method :'POST',
                             data:{action:action,user_id:user_id,fecha:fecha},
                             success:function(response){
                                 $("#result").html(response);

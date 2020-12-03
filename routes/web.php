@@ -24,7 +24,7 @@ Route::get('/contact','ContactController@index')->name('post');
 Route::get('/portafolio','PortafolioController@index')->name('portafolio');
 
 
-//Route::post('/action.php');
+Route::get('/action.php');
 
 
 Auth::routes();
