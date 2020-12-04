@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>@yield('title')</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -45,9 +45,10 @@
             <div class="container">
                 <a class="navbar-brand " href="{{ url('/') }}">
                 </a>
-                <div class="col align-self-centerr">
+                <div class="col align-self-center">
                     <img src="images/corazon.png">
                 </div>
+                <h1 class="display-5" style="color:white; font-weight:lighter">@yield('pag_title')</h1> 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -57,7 +58,7 @@
                     <ul class="navbar-nav mr-auto">
 
                     </ul>
-
+                
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->

@@ -3,16 +3,22 @@
 @section('title', 'Data')
 
 
-@section('content')
+@section('pag_title','Patient Data')
 
-    <form class="form-inline">
-        <i class="fas fa-search" aria-hidden="true"></i>
-        <input class="form-control form-control-sm ml-3 w-75 mr-sm-2" type="text" id="patient_id" placeholder="Insert patient ID" aria-label="Search">
-        <input class="btn  btn-primary" type="submit" style="margin-right:10px" id="search_patient" value="search">
-    </form>
+
+
+@section('content')
     
-    <h1 id="prueba"></h1>
-    <div class="table-responsive">
+
+        <form class="form-inline d-flex">
+            <div class="d-flex justify-content-center">
+                <input class="form-control form-control-sm ml-3 w-75 mr-sm-2" type="text" id="patient_id" placeholder="Insert patient ID" aria-label="Search">
+            </div>
+            <input  class="btn btn-outline-danger rounded-pill" type="submit" style="margin-right:10px; text-align:center" id="search_patient" value="search">
+        </form>
+    
+  
+    <div class="table-responsive p-3">
         <table class="table table-striped table-bordered table-hover">
             <thead>
                 <tr>
