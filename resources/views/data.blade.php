@@ -35,7 +35,7 @@
       $(document).ready(function(){
         $("#search_patient").on('click',function(){
             event.preventDefault();
-            alert('hola1');
+           
             var id = document.getElementById("patient_id").value;
             if(id !=''){
                 alert(id);
@@ -44,13 +44,17 @@
                 method:'get',
                 dataType: 'JSON',
                 success:function(response){
-                    alert('llego aca');
+               
                     var data_filter = response.filter( element => element.user_id == id );
-                    console.log(data_filter);     
+                    alert(data_filter.length);
+                   // console.log(data_filter);     
                     var finalTable = ""; 
-                    $.each(data_filter,function(data_filter){
-                        finalTable += "<tr><th scope=\"row\">"+data_filter.user_id+"</th><td>"+data_filter[2]+"</td><td>"+data_filter.bpm+"</td><td>"+data_filter.sO2+"</td><td>"+data_filter.fecha+"</td></tr>";
-                    });
+                    for (let i = 0; i < data_filter.length; i++) {
+                        var element = data_filter[i];
+                        finalTable += "<tr><th scope=\"row\">"+data_filter[i].user_id+"</th><td>"+data_filter[i].temperatura+"</td><td>"+data_filter[i].bpm+"</td><td>"+data_filter[i].sO2+"</td><td>"+data_filter[i].fecha+"</td></tr>";
+                        console.log(element);
+                    }
+                  
                     $('#show_patient').html(finalTable);
                 }
                 });
