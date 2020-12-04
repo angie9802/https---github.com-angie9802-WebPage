@@ -1,7 +1,9 @@
 
+
 <?php
-require 'config.php';
+    require('config.php');
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +18,8 @@ require 'config.php';
 
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>   
+  
+
 
 <!-- Popper JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -121,9 +124,9 @@ require 'config.php';
 
 
                         $.ajax({
-                            url: 'action.php',
-                            method :'POST',
-                            data:{action:action,user_id:user_id,fecha:fecha},
+                            url: "/action.php",
+                            type :"POST",
+                            data:{_method:'POST',action:action,user_id:user_id,fecha:fecha},
                             success:function(response){
                                 $("#result").html(response);
                                 $("#loader").hide();
@@ -143,3 +146,4 @@ require 'config.php';
         </script>
     </body>
 </html>
+

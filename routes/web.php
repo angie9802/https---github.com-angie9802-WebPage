@@ -17,15 +17,19 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/','home')->name('home');
 
-Route::view('/about','about')->name('about');
+Route::get('/data','DataController@index')->name('data');
 
-Route::get('/contact','ContactController@index')->name('post');
+Route::get('/contact','ContactController@index')->name('contact');
+
+//Route::post('data','PostingController@store');
 
 Route::get('/portafolio','PortafolioController@index')->name('portafolio');
 
-
 Route::get('/action.php');
 
+Route::get('/get-client-data', 'DataController@get_Data') ;
+
+//Route::resource('data', 'DataController');
 
 Auth::routes();
 

@@ -1,5 +1,4 @@
 <?php
-
     require 'config.php';
     
     
@@ -20,7 +19,7 @@
         $output ='';
         
         if($resul->num_row > 0){
-            while($row=$resul->fetch_assoc()){
+            while($row=$result->fetch_assoc()){
                 $output .= '<div class="col-md-3 mb-2">
                 <div class="card-deck">
                    <div class="card border-secondary">

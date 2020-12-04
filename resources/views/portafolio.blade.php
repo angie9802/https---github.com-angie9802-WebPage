@@ -6,9 +6,9 @@
 
     <h3 class="text-center text-light bg-danger p-2 ">Patient Portfolio</h3>
     <div class="table-responsive-sm">
-    <table class="table ">
+    <table class="table table-striped table-bordered table-hover">
         <thead>
-            <tr class="table-light">
+            <tr>
                 <th scope="col">ID</th>
                 <th scope="col">First name</th>
                 <th scope="col">Last name</th>
