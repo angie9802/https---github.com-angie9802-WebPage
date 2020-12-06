@@ -1,10 +1,17 @@
 @extends('layouts.app')
 @section('title', 'Portfolio')
 
+@section('corazon')
+<a href="/menu">
+    <img src="images/corazon.png">
+</a>
+@endsection
+
+@section('pag_title','Portfolio')
 
 @section('content')
 
-    <h3 class="text-center text-light bg-danger p-2 ">Patient Portfolio</h3>
+
     <div class="table-responsive-sm">
     <table class="table table-striped table-bordered table-hover">
         <thead>

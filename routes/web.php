@@ -25,11 +25,27 @@ Route::get('/contact','ContactController@index')->name('contact');
 
 Route::get('/portafolio','PortafolioController@index')->name('portafolio');
 
-Route::get('/action.php');
-
 Route::get('/get-client-data', 'DataController@get_Data') ;
 
-//Route::resource('data', 'DataController');
+Route::get('/formulas','MessagesController@index')->name('formulas');
+
+Route::get('/charts', 'ChartController@index')->name('charts');
+
+Route::post('chart/fetch_data', 'ChartController@fetch_data');
+
+Route::get('/menu', function () {
+    return view('menu');
+});
+Route::get('/physiotherapy', function () {
+    return view('physiotherapy');
+});
+Route::get('/data', function () {
+    return view('data');
+});
+
+Route::get('/formulas1', function () {
+    return view('formulas');
+});
 
 Auth::routes();
 

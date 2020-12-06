@@ -1,5 +1,11 @@
 @extends('layouts.app')
 
+@section('corazon')
+
+<img src="images/corazon.png">
+
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
