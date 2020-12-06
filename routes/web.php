@@ -21,24 +21,23 @@ Route::get('/data','DataController@index')->name('data');
 
 Route::get('/contact','ContactController@index')->name('contact');
 
-//Route::post('data','PostingController@store');
-
 Route::get('/portafolio','PortafolioController@index')->name('portafolio');
 
 Route::get('/get-client-data', 'DataController@get_Data') ;
 
-Route::get('/formulas','MessagesController@index')->name('formulas');
-
 Route::get('/charts', 'ChartController@index')->name('charts');
 
-Route::post('chart/fetch_data', 'ChartController@fetch_data');
+Route::get('/physiotherapy','PhysiotherapyController@index')->name('physiotherapy');
+
+Route::get('/get-client-data-p', 'PhysiotherapyController@get_Data') ;
+
+
+
 
 Route::get('/menu', function () {
     return view('menu');
 });
-Route::get('/physiotherapy', function () {
-    return view('physiotherapy');
-});
+
 Route::get('/data', function () {
     return view('data');
 });
