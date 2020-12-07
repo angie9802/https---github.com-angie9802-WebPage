@@ -19,7 +19,7 @@
             <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
                 <div class="grid grid-cols-1 md:grid-cols-2">
                     <div align ="center" class="p-6">
-                        <img src="portafolio.png" width="200" height="200"/>
+                        <img src="portafolio.png" width="100" height="100"/>
                         <br></br>
                         <div class="texto box-gray">
                         <a href="/portafolio">Portfolio</a>
@@ -27,7 +27,7 @@
                     </div>
 
                     <div align="center" class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
-                        <img src="terapia-fisica.png" width="200" height="200"/>
+                        <img src="terapia-fisica.png" width="100" height="100"/>
                         <br></br>
                         <div class="texto box-gray">
                         <a href="/physiotherapy">Physiotherapy</a>
@@ -35,7 +35,7 @@
                     </div>
 
                     <div align="center" class="p-6 border-t border-gray-200 dark:border-gray-700">
-                        <img src="cuidado-de-la-salud.png" width="200" height="200"/> 
+                        <img src="cuidado-de-la-salud.png" width="100" height="100"/> 
                         <br></br>
                         <div  class="texto box-gray">
                             <a href="/data">Data</a>
@@ -43,10 +43,10 @@
                     </div>
 
                     <div align="center" class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-l">
-                        <img src="prescripcion.png" width="200" height="200"/>
+                        <img src="prescripcion.png" width="100" height="100"/>
                         <br></br>
                         <div class="texto box-gray">
-                        <a href="/formulas1">Formulas</a>
+                        <a href="/formulas">Formulas</a>
                         </div>
                     </div>
                 </div>

@@ -14,11 +14,12 @@ class CreateFormulasTable extends Migration
     public function up()
     {
         Schema::create('formulas', function (Blueprint $table) {
-            $table->string('patient_id');
+            $table->id();
+            $table->integer('patient_id');
             $table->string('medicine');
             $table->string('dose');
             $table->string('duration');
-        
+            
         });
     }
 

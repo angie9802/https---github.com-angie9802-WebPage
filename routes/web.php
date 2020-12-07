@@ -25,6 +25,10 @@ Route::get('/portafolio','PortafolioController@index')->name('portafolio');
 
 Route::get('/get-client-data', 'DataController@get_Data') ;
 
+Route::get('/formulas','FormulasController@index')->name('formulas');
+
+Route::post('/formulas','FormulasController@store')->name('formulas.store');
+
 Route::get('/charts', 'ChartController@index')->name('charts');
 
 Route::get('/physiotherapy','PhysiotherapyController@index')->name('physiotherapy');
@@ -42,9 +46,6 @@ Route::get('/data', function () {
     return view('data');
 });
 
-Route::get('/formulas1', function () {
-    return view('formulas');
-});
 
 Auth::routes();
 

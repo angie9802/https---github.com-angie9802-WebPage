@@ -16,7 +16,7 @@
 <div class="card col-md-6 ">
     <div class="card-body">
         <div class="py-4">
-            <form method="POST" action="{{ route('formulas') }}">
+            <form method="POST" action="{{ route('formulas.store') }}">
                 @csrf
 
                 <div class="form-group row">
@@ -61,6 +61,11 @@
                     </div>
                 </div>
             </form>
+            @if (session('status'))
+                <div>
+                    <p class="text-center font-weight-bold">{{session('status')}}</p>
+                </div>
+            @endif
         </div>
     </div>
 </div>

@@ -7,7 +7,7 @@
     <img src="images/corazon.png">
 </a>
 @endsection
-@section('pag_title','Patient Data')
+@section('pag_title','Sensor Data')
 
 
 
@@ -16,7 +16,7 @@
 
         <form class="form-inline d-flex">
             <div class="d-flex justify-content-center">
-                <input class="form-control form-control-sm ml-3 w-75 mr-sm-2" type="text" id="patient_id" placeholder="Insert patient ID" aria-label="Search">
+                <input class="form-control form-control-sm ml-3 w-75 mr-sm-2" type="text" id="patient_id" placeholder="Insert machine ID" aria-label="Search">
             </div>
             <input  class="btn btn-outline-danger rounded-pill" type="submit" style="margin-right:10px; text-align:center" id="search_patient" value="search">
         </form>
@@ -26,7 +26,7 @@
         <table class="table table-striped table-bordered table-hover">
             <thead>
                 <tr>
-                  <th scope="col">ID</th>
+                  <th scope="col">Machine ID</th>
                   <th scope="col">Temperature (°C)</th>
                   <th scope="col">BPM</th>
                   <th scope="col">sO2 (%)</th>
@@ -103,14 +103,14 @@ console.log(typeof(chart_data));
                 dataType: 'JSON',
                 success:function(response){
                
-                    var data_filter = response.filter( element => element.user_id == id );
+                    var data_filter = response.filter( element => element.machine_id == id );
                   
                     var data_json = JSON.stringify(data_filter);
                     console.log(typeof(data_filter));
                     var finalTable = ""; 
                     for (let i = 0; i < data_filter.length; i++) {
                         var element = data_filter[i];
-                        finalTable += "<tr><th scope=\"row\">"+data_filter[i].user_id+"</th><td>"+data_filter[i].temperatura+"</td><td>"+data_filter[i].bpm+"</td><td>"+data_filter[i].sO2+"</td><td>"+data_filter[i].fecha+"</td></tr>";
+                        finalTable += "<tr><th scope=\"row\">"+data_filter[i].machine_id+"</th><td>"+data_filter[i].temperatura+"</td><td>"+data_filter[i].bpm+"</td><td>"+data_filter[i].sO2+"</td><td>"+data_filter[i].fecha+"</td></tr>";
                         console.log(element);
                     }
                   

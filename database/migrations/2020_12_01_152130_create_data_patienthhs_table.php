@@ -15,7 +15,7 @@ class CreateDataPatienthhsTable extends Migration
     {
         Schema::create('data_patienthhs', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id');
+            $table->integer('machine_id');
             $table->float('temperatura');
             $table->integer('bpm');
             $table->float('sO2');

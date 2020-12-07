@@ -14,7 +14,7 @@
 
 <form class="form-inline d-flex">
     <div class="d-flex justify-content-center">
-        <input class="form-control form-control-sm ml-3 w-75 mr-sm-2" type="text" id="patient_id" placeholder="Insert patient ID" aria-label="Search">
+        <input class="form-control form-control-sm ml-3 w-75 mr-sm-2" type="text" id="patient_id" placeholder="Insert ID" aria-label="Search">
     </div>
     <input  class="btn btn-outline-danger rounded-pill" type="submit" style="margin-right:10px; text-align:center" id="search_patient" value="search">
 </form>
@@ -25,9 +25,10 @@
     <thead>
         <tr>
           <th scope="col">ID</th>
-          <th scope="col">ac_x</th>
-          <th scope="col">ac_y</th>
-          <th scope="col">ac_z</th>
+          <th scope="col">Angular position X</th>
+          <th scope="col">Angular position Y</th>
+          <th scope="col">Angular position Z</th>
+          <th scope="col">Date</th>
         </tr>
       </thead>
       <tbody id="show_patient">
@@ -43,7 +44,7 @@
 
 <script type="text/javascript" >
 
-google.charts.load('current', {packages: ['corechart', 'line']});
+google.charts.load('current', {packages: ['corechart','controls']});
 google.charts.setOnLoadCallback(drawDateChart);
 
 function drawDateChart(chart_data, chart_main_title) {
@@ -54,17 +55,19 @@ console.log(typeof(chart_data));
 
 var data = new google.visualization.DataTable();
 data.addColumn('string', 'date');
-data.addColumn('number', 'ac_x');
-data.addColumn('number', 'ac_y');
-data.addColumn('number', 'ac_z');
+data.addColumn('number', 'mag_acel');
+data.addColumn('number', 'th_x');
+data.addColumn('number', 'th_y');
+data.addColumn('number', 'th_z');
 
 $.each(jsonData, (i, jsonData) => {
 let date = jsonData.fecha;
-let temperatura = parseFloat($.trim(jsonData.ac_x));
-let bpm = parseInt($.trim(jsonData.ac_y));
-let sO2 = parseInt($.trim(jsonData.ac_z));
+let mag_acel = parseFloat($.trim(jsonData.mag_acel));
+let th_x = parseFloat($.trim(jsonData.th_x));
+let th_y = parseFloat($.trim(jsonData.th_y));
+let th_z = parseFloat($.trim(jsonData.th_z));
 data.addRows([
-    [date,temperatura,bpm,sO2]
+    [date,mag_acel,th_x,th_y,th_z]
 ]);
 
 });
@@ -79,16 +82,17 @@ title: 'Data Values'
 },
 colors: ['#FF0000', '#25F600','#0026B0'],
 explorer: { 
-            actions: ['dragToZoom', 'rightClickToReset'],
-            axis: 'horizontal',
-            keepInBounds: true,
-            maxZoomIn: 4.0}
+actions: ['dragToZoom', 'rightClickToReset'],
+axis: 'horizontal',
+keepInBounds: true,
+maxZoomIn: 4.0}
 };
 
+  
 var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+
 chart.draw(data, options);
 }
-
 
 ///////////////////////////////////
 
@@ -105,14 +109,14 @@ $("#search_patient").on('click',function(){
         dataType: 'JSON',
         success:function(response){
        
-            var data_filter = response.filter( element => element.user_id == id );
+            var data_filter = response.filter( element => element.machine_id == id );
           
             var data_json = JSON.stringify(data_filter);
             console.log(typeof(data_filter));
             var finalTable = ""; 
             for (let i = 0; i < data_filter.length; i++) {
                 var element = data_filter[i];
-                finalTable += "<tr><th scope=\"row\">"+data_filter[i].user_id+"</th><td>"+data_filter[i].ac_x+"</td><td>"+data_filter[i].ac_y+"</td><td>"+data_filter[i].ac_z+"</td><td>"+data_filter[i].fecha+"</td></tr>";
+                finalTable += "<tr><th scope=\"row\">"+data_filter[i].machine_id+"</th><td>"+data_filter[i].gi_x+"</td><td>"+data_filter[i].gi_y+"</td><td>"+data_filter[i].gi_z+"</td><td>"+data_filter[i].fecha+"</td></tr>";
                 console.log(element);
             }
           

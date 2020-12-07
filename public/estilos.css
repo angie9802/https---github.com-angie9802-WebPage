@@ -1,6 +1,6 @@
 .texto{
 	font-family: 'Cabin', sans-serif;
-	font-size: 30px;
+	font-size: 20px;
 }
 .box-red{
 	margin:0 0 25px;
@@ -20,7 +20,7 @@
 .box-green {
 	margin:0 0 25px;
 	overflow:hidden;
-	padding:20px;
+	padding:15px;
 	-webkit-border-radius: 10px;
 }
 
