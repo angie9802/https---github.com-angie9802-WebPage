@@ -17,34 +17,36 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/','home')->name('home');
 
-Route::get('/data','DataController@index')->name('data');
+Route::get('/data','DataController@index')->name('data')
+        ->middleware('auth');
 
-Route::get('/contact','ContactController@index')->name('contact');
+Route::get('/contact','ContactController@index')->name('contact')
+        ->middleware('auth');
 
-Route::get('/portafolio','PortafolioController@index')->name('portafolio');
+Route::get('/portafolio','PortafolioController@index')->name('portafolio')
+        ->middleware('auth');
 
-Route::get('/get-client-data', 'DataController@get_Data') ;
+Route::get('/get-client-data', 'DataController@get_Data');
 
-Route::get('/formulas','FormulasController@index')->name('formulas');
+Route::get('/formulas','FormulasController@index')->name('formulas')
+        ->middleware('auth');
 
 Route::post('/formulas','FormulasController@store')->name('formulas.store');
 
-Route::get('/charts', 'ChartController@index')->name('charts');
-
-Route::get('/physiotherapy','PhysiotherapyController@index')->name('physiotherapy');
+Route::get('/physiotherapy','PhysiotherapyController@index')->name('physiotherapy')
+        ->middleware('auth');;
 
 Route::get('/get-client-data-p', 'PhysiotherapyController@get_Data') ;
 
 
 
 
-Route::get('/menu', function () {
-    return view('menu');
-});
-
+Route::get('/menu', function () { return view('menu');})
+        ->middleware('auth');
+/*
 Route::get('/data', function () {
     return view('data');
-});
+});*/
 
 
 Auth::routes();
