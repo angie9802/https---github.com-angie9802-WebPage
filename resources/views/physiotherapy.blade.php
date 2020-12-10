@@ -55,19 +55,14 @@ console.log(typeof(chart_data));
 
 var data = new google.visualization.DataTable();
 data.addColumn('string', 'date');
-data.addColumn('number', 'mag_acel');
-data.addColumn('number', 'th_x');
-data.addColumn('number', 'th_y');
-data.addColumn('number', 'th_z');
+data.addColumn('number', 'Aceleration (m/s^2)');
 
 $.each(jsonData, (i, jsonData) => {
 let date = jsonData.fecha;
 let mag_acel = parseFloat($.trim(jsonData.mag_acel));
-let th_x = parseFloat($.trim(jsonData.th_x));
-let th_y = parseFloat($.trim(jsonData.th_y));
-let th_z = parseFloat($.trim(jsonData.th_z));
+
 data.addRows([
-    [date,mag_acel,th_x,th_y,th_z]
+    [date,mag_acel]
 ]);
 
 });

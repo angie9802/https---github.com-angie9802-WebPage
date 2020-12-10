@@ -21,6 +21,7 @@
                 <th scope="col">First name</th>
                 <th scope="col">Last name</th>
                 <th scope="col">Email</th>
+                <th scope="col">Phone</th>
             </tr>
         </thead>
         <tbody id="myTable">
@@ -31,6 +32,7 @@
                 <td>{{$row['firstName']}}</td>
                 <td>{{$row['lastName']}}</td>
                 <td>{{$row['email']}}</td>
+                <td>{{$row['phone']}}</td>
               
             </tr>
           
