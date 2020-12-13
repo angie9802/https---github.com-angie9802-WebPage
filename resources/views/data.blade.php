@@ -39,30 +39,46 @@
         </table>
       </div>
     
-    <div class="panel-body">
-         <div id="chart_div" style="width: 100%; height: 600px;"></div>
+
+    <div id="dashboard_div">
+      <div id="filter_div"></div>
+      <div id="chart_div"></div>
     </div>
 
 
 <script type="text/javascript" >
 
-google.charts.load('current', {packages: ['corechart', 'line']});
-google.charts.setOnLoadCallback(drawDateChart);
+google.charts.load('current', {
+  callback: drawDashboard,
+  packages: ['corechart', 'controls']
+});
 
-function drawDateChart(chart_data, chart_main_title) {
+
+function drawDashboard(chart_data, chart_main_title) {
 
 let jsonData = chart_data;
 
 console.log(typeof(chart_data));
 
   var data = new google.visualization.DataTable();
-  data.addColumn('string', 'date');
+  data.addColumn('date', 'date');
   data.addColumn('number', 'Temperature (°C)');
   data.addColumn('number', 'BPM');
   data.addColumn('number', 'sO2 (%)');
 
     $.each(jsonData, (i, jsonData) => {
-        let date = jsonData.fecha;
+
+        let timestamp= Date.parse(jsonData.fecha);
+        let todate=new Date(timestamp).getDate();
+        let tomonth=new Date(timestamp).getMonth();
+        let toyear=new Date(timestamp).getFullYear();
+        let tohour=new Date(timestamp).getHours();
+        let tominute=new Date(timestamp).getMinutes();
+        let toseconds=new Date(timestamp).getSeconds();
+        let date = new Date(toyear,tomonth,todate,tohour,tominute,toseconds);
+      
+        let date1 = jsonData.fecha;
+        console.log(typeof(date));
         let temperatura = parseFloat($.trim(jsonData.temperatura));
         let bpm = parseInt($.trim(jsonData.bpm));
         let sO2 = parseInt($.trim(jsonData.sO2));
@@ -72,19 +88,40 @@ console.log(typeof(chart_data));
 
     });
 
+  
 
-  var options = {
-    hAxis: {
-      title: 'Time'
-    },
-    vAxis: {
-      title: 'Data Values'
-    },
-    colors: ['#FF0000', '#25F600','#0026B0']
-  };
+  var dataRangeSlider = new google.visualization.ControlWrapper({
+    controlType: 'DateRangeFilter',
+    containerId: 'filter_div',
+    options: {
+      filterColumnLabel: 'date'
+    }
+  });
 
-  var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-  chart.draw(data, options);
+  google.visualization.events.addListener(dataRangeSlider, 'ready', function () {
+    var state = dataRangeSlider.getState();
+    console.log(state.lowValue, state.highValue);
+  });
+
+  var lineChart = new google.visualization.ChartWrapper({
+    chartType: 'LineChart',
+    containerId: 'chart_div',
+    options: {
+      title: 'Graphic Data',
+      width: 1200,
+      height: 900,
+      chartArea: {
+        left: 80,
+        top: 50,
+        width: '80%',
+        height: '80%'
+      }
+    }
+  });
+
+  var dashboard = new google.visualization.Dashboard(document.getElementById('dashboard_div'));
+  dashboard.bind(dataRangeSlider, lineChart);
+  dashboard.draw(data);
 }
 
 
@@ -116,7 +153,7 @@ console.log(typeof(chart_data));
                   
                     $('#show_patient').html(finalTable);
                     
-                    drawDateChart(data_filter,'Graphic Data');
+                    drawDashboard(data_filter,'Graphic Data');
                 }
                 });
             }
